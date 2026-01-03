@@ -1,5 +1,5 @@
 
-export type UserRole = 'investor' | 'owner' | 'admin';
+export type UserRole = 'investor' | 'owner' | 'admin' | 'standard';
 
 export interface User {
   id: string;
@@ -28,10 +28,13 @@ export interface BusinessIdea {
   full_description: string;
   required_budget: number;
   expected_profit_share: number;
+  monetization_model?: string;
+  deal_type?: string;
   visibility: IdeaVisibility;
   status: IdeaStatus;
   created_at: string;
   tags: string[];
+  image_data?: string; 
 }
 
 export interface Message {
@@ -56,10 +59,11 @@ export interface Agreement {
   createdAt: string;
 }
 
-export interface MarketSignal {
-  title: string;
-  summary: string;
-  url: string;
-  source: string;
+export interface LogEntry {
+  id: string;
   timestamp: string;
+  level: 'INFO' | 'WARN' | 'ERROR';
+  event: string;
+  userId?: string;
+  details?: string;
 }
